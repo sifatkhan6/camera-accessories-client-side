@@ -2,6 +2,7 @@ import React from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import './SignUp.css'
 
 const SignUp = () => {
     const [
@@ -32,20 +33,18 @@ const SignUp = () => {
         createUserWithEmailAndPassword(email, password);
     }
     return (
-        <div>
-            <div className='register-form'>
-                <h2 className='mt-4 text-center'>Please Register</h2>
-                <form className='mt-4' onSubmit={handleRegister}>
-                    <input type="text" name="name" id="" placeholder='Your Name' />
+        <div className='register-form'>
+            <h2 className='mt-4 text-center'>Please Sign Up</h2>
+            <form className='mt-4' onSubmit={handleRegister}>
+                <input type="text" name="name" id="" placeholder='Your Name' />
 
-                    <input type="email" name="email" id="" placeholder='Your Email address' required />
+                <input type="email" name="email" id="" placeholder='Your Email address' required />
 
-                    <input type="password" name="password" id="" placeholder='Password' required />
-                    <input className='w-50 mx-auto d-block btn btn-dark mt-4' type="submit" value="Register" />
+                <input type="password" name="password" id="" placeholder='Password' required />
+                <input className='w-50 mx-auto d-block btn btn-dark mt-4' type="submit" value="Sign Up" />
 
-                </form>
-                <p className='text-center'>Already user? <Link to="/login" className='text-primary text-decoration-none' onClick={navigateLogin}> Login</Link></p>
-            </div>
+            </form>
+            <p className='text-center'>Already user? <Link to="/login" className='text-primary text-decoration-none' onClick={navigateLogin}> Login</Link></p>
         </div>
     );
 };
