@@ -1,0 +1,16 @@
+.home-container {
+    background-image: url('../../Images/image2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+
+.text{
+    color: aliceblue;
+    padding-top: 10%;
+}
+
+.error{
+    color: red;
+    margin-top: 5%;
+}
