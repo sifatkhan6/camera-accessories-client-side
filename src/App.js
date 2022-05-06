@@ -14,7 +14,7 @@ import AddItems from './Pages/AddItems/AddItems';
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Header></Header>
 
       <Routes>
