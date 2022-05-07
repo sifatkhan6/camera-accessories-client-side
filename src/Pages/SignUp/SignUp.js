@@ -25,9 +25,9 @@ const SignUp = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
-        navigate('/home')
-    }
+    // if (user) {
+    //     navigate('/home')
+    // }
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -35,7 +35,7 @@ const SignUp = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        console.log(name, email, password)
+        // console.log(name, email, password)
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
