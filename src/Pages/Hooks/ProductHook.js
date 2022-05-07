@@ -5,7 +5,7 @@ const ProductHook = () => {
     const [productDetails, setproductDetails] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/product')
+        fetch('http://localhost:5000/inventory')
         .then(res => res.json())
         .then(data => setproductDetails(data))
     },[])

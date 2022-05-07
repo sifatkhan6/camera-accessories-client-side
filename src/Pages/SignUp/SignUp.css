@@ -1,9 +1,9 @@
-.register-form{
+.signUp{
     margin: 0 auto;
     width: 50%;
 }
 
-.register-form input{
+.signUp input{
     display: block;
     width: 100%;
     height: 40px;

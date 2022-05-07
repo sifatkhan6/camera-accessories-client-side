@@ -1,7 +1,8 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import './SignUp.css'
 
 const SignUp = () => {
@@ -12,17 +13,23 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
     const navigate = useNavigate();
 
     const navigateLogin = () => {
         navigate('/login');
     }
 
-    if (user) {
-        navigate('/home');
+    if (loading) {
+        return <Loading></Loading>
     }
 
-    const handleRegister = event => {
+    if (user) {
+        navigate('/home')
+    }
+
+    const handleRegister = async (event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
@@ -30,10 +37,12 @@ const SignUp = () => {
 
         console.log(name, email, password)
 
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        navigate('/home');
     }
     return (
-        <div className='register-form'>
+        <div className='signUp'>
             <h2 className='mt-4 text-center'>Please Sign Up</h2>
             <form className='mt-4' onSubmit={handleRegister}>
                 <input type="text" name="name" id="" placeholder='Your Name' />
