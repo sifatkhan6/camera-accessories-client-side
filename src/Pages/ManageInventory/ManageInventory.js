@@ -23,15 +23,15 @@ const ManageInventory = () => {
     return (
         <div className='container'>
             <h2 className='mt-4 text-center'>All Products</h2>
-            <div className='row mt-5'>
+            <div className='row mt-4'>
                 {
                     productDetails.map(product => <div className='col-sm-12 col-md-6 col-lg-4 mb-5' key={product._id}>
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div className="card">
                             <img src={product.img} className="card-img-top w-100" alt='...' />
                             <div className="card-body">
                                 <h4 className="card-title">{product.product_name}</h4>
                                 <h5 className="card-title mt-2">Price: ${product.price}</h5>
-                                <p className="card-text">{product.description.slice(0, 90)}...</p>
+                                <p className="card-text">{product.description.slice(0, 70)}...</p>
                                 <h6 className="card-title"><small>Quantity: {product.quantity}</small></h6>
                                 <h6 className="card-title"><small>Suppiler: {product.supplier_name}</small></h6>
                                 <button className='btn btn-danger' onClick={() => handleDelete(product._id)}>Delete</button>

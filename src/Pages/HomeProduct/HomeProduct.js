@@ -12,8 +12,8 @@ const HomeProduct = ({ productDetail }) => {
     }
 
     return (
-        <div className=' col-sm-12 col-md-6 col-lg-4 mb-5'>
-            <div className="card" style={{ width: "18rem" }}>
+        <div className='col-sm-12 col-md-6 col-lg-4 mb-5'>
+            <div className="card">
                 <img src={img} className="card-img-top w-100" alt='...' />
                 <div className="card-body">
                     <h4 className="card-title">{product_name}</h4>
