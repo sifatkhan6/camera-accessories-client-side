@@ -1,13 +1,9 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
+import { Link } from 'react-router-dom';
 import HomeProducts from '../HomeProducts/HomeProducts';
-import ManageInventory from '../ManageInventory/ManageInventory';
 import './Home.css'
 
 const Home = () => {
-
-    const [user] = useAuthState(auth);
 
     return (
         <div>
@@ -17,19 +13,10 @@ const Home = () => {
 
 
 
-            <div className='container mx-auto ml-5'>
+            <div className='container mx-auto ml-5 text-center'>
                 <HomeProducts></HomeProducts>
+                <Link className='btn btn-dark mt-4' to={'/manageinventory'}>Manage Inventories</Link>
             </div>
-
-
-
-
-            {/* {
-                user ?
-                    <ManageInventory></ManageInventory>
-                    :
-                    <p className='error'>Please login to see inventory items</p>
-            } */}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Inventory.css'
 
 const Inventory = () => {
@@ -29,8 +29,12 @@ const Inventory = () => {
                     <p><strong> Description:</strong> {inventory.description}</p>
                     <h6><small>Quantity: {inventory.quantity}</small></h6>
                     <h6><small>Supplier: {inventory.supplier_name}</small></h6>
-                    <button>Delivered</button>
+                    <button className='btn btn-secondary mt-4'>Delivered</button>
                 </div>
+            </div>
+
+            <div className='text-center'>
+                <Link className='btn btn-dark mt-5' to={'/manageinventory'}>Manage Inventories</Link>
             </div>
         </div>
     );
