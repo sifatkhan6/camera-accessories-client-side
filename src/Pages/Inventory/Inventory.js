@@ -16,6 +16,10 @@ const Inventory = () => {
             .then(data => setInventory(data));
     }, [])
 
+    const handleDavivered = () => {
+        
+    }
+
     return (
         <div className='container'>
             <div className='inventorySection'>

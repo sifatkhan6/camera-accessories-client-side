@@ -1,9 +1,17 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import ProductHook from '../Hooks/ProductHook';
+import './ManageInventory.css'
 
 const ManageInventory = () => {
 
     const [productDetails, setproductDetails] = ProductHook();
+
+    const navigate = useNavigate();
+
+    const navigateToInventoryDetails = id => {
+        navigate(`/inventory/${id}`);
+    }
 
     const handleDelete = id => {
         const proceed = window.confirm('Want to delete?');
@@ -22,6 +30,9 @@ const ManageInventory = () => {
 
     return (
         <div className='container'>
+            <div className='text-center'>
+                <Link className='btn btn-success mt-4' to={'/additems'}>Add New Item</Link>
+            </div>
             <h2 className='mt-4 text-center'>All Products</h2>
             <div className='row mt-4'>
                 {
@@ -34,7 +45,10 @@ const ManageInventory = () => {
                                 <p className="card-text">{product.description.slice(0, 70)}...</p>
                                 <h6 className="card-title"><small>Quantity: {product.quantity}</small></h6>
                                 <h6 className="card-title"><small>Suppiler: {product.supplier_name}</small></h6>
-                                <button className='btn btn-danger' onClick={() => handleDelete(product._id)}>Delete</button>
+
+                                <button onClick={() => navigateToInventoryDetails(product._id)} className="btn btn-dark">Manage</button>
+
+                                <button className='btn btn-danger delete-btn' onClick={() => handleDelete(product._id)}>Delete</button>
                             </div>
                         </div>
                     </div>)
