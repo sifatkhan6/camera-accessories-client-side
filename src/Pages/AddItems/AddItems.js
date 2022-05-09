@@ -22,7 +22,7 @@ const AddItems = () => {
             email: user?.email
         }
 
-        axios.post('http://localhost:5000/inventory', myitem)
+        axios.post('https://quiet-ridge-44662.herokuapp.com/inventory', myitem)
         .then(response => {
             const {data} = response;
             if(data.insertedId){
@@ -31,7 +31,7 @@ const AddItems = () => {
             }
         })
 
-        // const url = `http://localhost:5000/inventory`;
+        // const url = `https://quiet-ridge-44662.herokuapp.com/inventory`;
         // fetch(url, {
         //     method: 'POST',
         //     headers: {

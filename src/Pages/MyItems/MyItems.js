@@ -13,7 +13,7 @@ const MyItems = () => {
 
         const getItems = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/myitem?email=${email}`;
+            const url = `https://quiet-ridge-44662.herokuapp.com/myitem?email=${email}`;
             console.log(email);
             const { data } = await axios.get(url);
             setMyItems(data);
@@ -24,7 +24,7 @@ const MyItems = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://quiet-ridge-44662.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })

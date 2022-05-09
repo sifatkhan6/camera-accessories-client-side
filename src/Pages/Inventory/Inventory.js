@@ -10,7 +10,7 @@ const Inventory = () => {
     const [inventory, setInventory] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${inventoryId}`;
+        const url = `https://quiet-ridge-44662.herokuapp.com/inventory/${inventoryId}`;
 
         fetch(url)
             .then(res => res.json())
@@ -24,7 +24,7 @@ const Inventory = () => {
         const newProduct = {...inventory, quantity: newQuantity};
         setInventory(newProduct);
         if(newQuantity > -1){
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://quiet-ridge-44662.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -44,7 +44,7 @@ const Inventory = () => {
         const restock = inventory.quantity + newStock;
         const newProduct = {...inventory, quantity: restock};
 
-        const url = `http://localhost:5000/myitem/${inventoryId}`;
+        const url = `https://quiet-ridge-44662.herokuapp.com/myitem/${inventoryId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
