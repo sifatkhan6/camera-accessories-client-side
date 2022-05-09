@@ -1,4 +1,4 @@
-# NaamChara Model
+# Camera Accessories
 
 ### Live site link
 https://incandescent-crisp-d35f09.netlify.app/
