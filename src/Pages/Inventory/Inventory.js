@@ -8,6 +8,7 @@ const Inventory = () => {
     const { inventoryId } = useParams();
 
     const [inventory, setInventory] = useState({});
+    const [isReload, setIsReload] = useState(false);
 
     useEffect(() => {
         const url = `https://quiet-ridge-44662.herokuapp.com/inventory/${inventoryId}`;
@@ -15,7 +16,7 @@ const Inventory = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setInventory(data));
-    }, [inventoryId])
+    }, [isReload]);
 
     // decreasing quantity 
     const handleDavivered = (id) => {
@@ -30,8 +31,10 @@ const Inventory = () => {
                 headers: {
                     'content-type' : 'application/json'
                 },
-                body: JSON.stringify(newQuantity)
+                body: JSON.stringify(newProduct)
             })
+            .then(res => res.json())
+            .then(data => setIsReload(!isReload));
         }
     }
 
@@ -40,11 +43,12 @@ const Inventory = () => {
         event.preventDefault();
 
         const stock = event.target.AddQuantity.value;
-        const newStock = parseInt(stock + 1);
-        const restock = inventory.quantity + newStock;
+        const newStock = parseInt(stock);
+        const oldStock = parseInt(inventory.quantity);
+        const restock =  oldStock + newStock;
         const newProduct = {...inventory, quantity: restock};
 
-        const url = `https://quiet-ridge-44662.herokuapp.com/myitem/${inventoryId}`;
+        const url = `https://quiet-ridge-44662.herokuapp.com/inventory/${inventoryId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -54,7 +58,7 @@ const Inventory = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('Successfully added', data);
+            setIsReload(!isReload);
             event.target.reset();
         })
         toast('Quantity Added Successfully.')
@@ -73,7 +77,7 @@ const Inventory = () => {
                     <p><strong> Description:</strong> {inventory.description}</p>
                     <h6><small>Quantity: {inventory.quantity}</small></h6>
                     <h6><small>Supplier: {inventory.supplier_name}</small></h6>
-                    <button className='btn btn-secondary mt-4' onClick={() => handleDavivered(inventory._id)}>Delivered</button>
+                    <button className='btn btn-secondary mt-4' onClick={() => handleDavivered(inventoryId)}>Delivered</button>
                 </div>
             </div>
 

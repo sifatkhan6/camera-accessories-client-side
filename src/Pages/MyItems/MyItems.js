@@ -14,7 +14,6 @@ const MyItems = () => {
         const getItems = async () => {
             const email = user.email;
             const url = `https://quiet-ridge-44662.herokuapp.com/myitem?email=${email}`;
-            console.log(email);
             const { data } = await axios.get(url);
             setMyItems(data);
         }

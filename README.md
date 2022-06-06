@@ -3,8 +3,8 @@
 ### Live site link
 https://incandescent-crisp-d35f09.netlify.app/
 
-### Private repo client side link
-https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-sifatkhan6
+### Server repo link
+
 
 ## What I have in this project
 - install react app
@@ -12,4 +12,4 @@ https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-sifatkhan
 - fullfil all the requirements
 - using firebase for authentication
 - Login And Registretion
-- CURB Operation and JWT done
+- CURD Operation and JWT done
